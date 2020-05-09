@@ -1,36 +1,23 @@
-/**
- * Definition for isBadVersion()
- * 
- * @param {integer} version number
- * @return {boolean} whether the version is bad
- * isBadVersion = function(version) {
- *     ...
- * };
- */
-
-/**
- * @param {function} isBadVersion()
- * @return {function}
- */
 var solution = function(isBadVersion) {
     /**
      * @param {integer} n Total versions
      * @return {integer} The first bad version
      */
     return function(n) {
-        let left=1;
-        let right=n;
-    while (left < right) {
-        var mid = parseInt((left + right )/ 2);
-        if (isBadVersion(mid)) {
-            right = mid;
-        } else {
-            left = mid + 1;
+        let left = 1;
+        let right = n;
+        while(left <= right){
+            let middle = left + Math.floor((right - left) / 2);
+            if(isBadVersion(middle)){
+                if ((middle-1 > 0 && !isBadVersion(middle-1)) || (middle === 1)){
+                    return middle;
+                }else{
+                    right = middle - 1;
+                }
+            }else{
+                left = middle + 1;
+            }
         }
-    }
-        return left;
-  
-        
-        
+        return -1;
     };
 };
