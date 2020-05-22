@@ -1,0 +1,1 @@
+function getFrequency(e){const t={};for(let n=0;n<e.length;n++)t[e[n]]?t[e[n]]++:t[e[n]]=1;return t}const frequencySort=function(e){if(e.length<2)return e;if(2===e.length)return[...e].sort().join("");const t=getFrequency(e),n=Object.entries(t).sort((e,t)=>t[1]-e[1]);let r="";n.map(e=>{r+=e[0].repeat(e[1])});return r};
