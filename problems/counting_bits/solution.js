@@ -1,0 +1,1 @@
+var countBits=function(n){const t=[];for(var r=0;r<=n;r++){var o=[...r.toString(2)].sort().join(""),s=o.indexOf(1),u=o.lastIndexOf(1);s>-1&&u!==s?t.push(u-s+1):s>-1?t.push(1):t.push(0)}return t};
