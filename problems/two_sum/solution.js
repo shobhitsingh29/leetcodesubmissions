@@ -1,19 +1,28 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
 var twoSum = function(nums, target) {
-    var index1, index2;
-    for(var i=0;i<nums.length;i++){
-         for(var j=i+1;j<nums.length;j++){
+    var obj={}
+    nums.map((val,index)=>{
         
-             if(nums[i]+nums[j]===target){
-                 index1=i;
-                  index2=j;
-                 
-             }
-         }
-    }
-        return [ index1, index2]
+        if(!obj[val]){
+            obj[val]={};
+            obj[val].count=1;
+            obj[val].index=index;
+        }else{
+             obj[val].count+=1;
+            obj[val].index1=index;
+        }
+    })
+    
+        for(var k in obj){
+            if(obj[target-k]){
+                if(obj[k].count===2){
+                    
+                     return [obj[k].index,obj[k].index1]
+                };
+                
+                return [obj[k].index,obj[target-k].index]
+                
+                
+            }
+        }
+    
 };
