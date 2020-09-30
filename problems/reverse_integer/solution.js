@@ -2,31 +2,21 @@
  * @param {number} x
  * @return {number}
  */
-var reverse = function(x) {
-    
-    var a=x.toString();
-    var s=[...a];
-    var neg=false;
-    var flag=false;
-    if(s[0]=="-"){
-        neg=true;
-        s=s.splice(1);
-    }
-    s=s.reverse();
-    if(s[0]===0){
-        flag=true;
-         s=s.splice(0,s.length);
-    }
-    s=s.toString().split(",").join("");
-    if(neg){
-        
-        s="-"+s;
-    }
-    if(parseInt(s)>2147483647){
-        return 0;
-    }
-    if(parseInt(s)<-2147483648){
-        return 0;
-    }
-    return parseInt(s)
+var reverse = function(n) {
+    var digit, result = 0
+
+    while( n ){
+        digit = n % 10                 //  Get last digit. Ex. 123/10 → 12.3 → 3
+        result = (result * 10) + digit
+        if(result>2147483647){
+      return 0
+  }
+    if(result<-2147483648){
+      return 0
+  }
+        //  Ex. 123 → 1230 + 4 → 1234
+        n = n/10|0                      //  Remove last digit. Ex. 123 → 12.3 → 12
+    }  
+  
+    return result
 };
