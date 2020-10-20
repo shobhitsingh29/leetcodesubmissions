@@ -3,20 +3,26 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    nums.sort();
-    var diff=0;
-    var maxDif=0;
-    var maj=nums[0];
+    var map1=new Map();
     nums.map((val)=>{
-        diff=nums.lastIndexOf(val)-nums.indexOf(val);
-        if(diff>maxDif){
-            maxDif=diff;
-            maj=val;
-        }
         
-    });
-    return maj;
-    
-    
+        if(map1.has(val)){
+            var mapVal=map1.get(val);
+            map1.set(val,mapVal+1);
+            
+        }else{
+               map1.set(val,1);
+        }
+    })
+    var max=0;
+    var maxKey=nums[0];
+    for (let [key, value] of map1){
+	
+        if(value>max){
+            max=value;
+            maxKey=key
+        }
+}
+    return maxKey;
     
 };
