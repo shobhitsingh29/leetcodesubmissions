@@ -1,7 +1,21 @@
 /**
- * @param {number} N
+ * @param {number} n
  * @return {number}
  */
-var fib = function(N) {
-    return Math.round((Math.pow((1 + Math.sqrt(5)) / 2,N)) / Math.sqrt(5))
+    var dp=[0,1];
+
+var fib = function(n) {
+    
+    if(n>1){
+        if(!dp[n]){
+            
+           dp[n]=fib(n-1)+fib(n-2) 
+        }
+            return dp[n]
+        
+    }else{
+        return dp[n];
+    }
+    
+    
 };
