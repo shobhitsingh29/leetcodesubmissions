@@ -3,32 +3,26 @@
  * @return {string[]}
  */
 var fizzBuzz = function(n) {
-    var str=[];
-    var obj={
-        
-        '3':"Fizz",
-        '5':"Buzz",
-        
-    };
+    let answer=[];
     
-    for(var i=1;i<=n;i++){
-        
-        
-        var temp='';
-        
-        for(var k in obj){
-             if(i%k==0){
-         temp+=obj[k];
-        }
-        }
+    for(let i=1;i<n+1;i++){
+        if((i%5==0) && (i%3==0)){
+            answer[i] = "FizzBuzz"
             
+        }
+        else if( i%3==0){
+            answer[i] = "Fizz"
             
-        if(temp==''){
-           temp+=String(i);
+        }
+         else if( i%5==0){
+            answer[i] = "Buzz"
+            
+        }
+        else{
+            answer[i] = i.toString();
+            
         }
         
-        str.push(temp)
     }
-    return str;
-    
+    return answer.splice(1)
 };
