@@ -3,17 +3,27 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function(nums) {
-    console.log("sdasds",nums);
-    const len=nums.length;
-    for(let j=0;j<len;j++){
-    for(let i=0;i<len-j-1;i++){
-        if(nums[i]===0){
-            const temp=nums[i+1];
-            nums[i+1]=0;
-              nums[i]=temp;
+    let cur =0;
+    let slow=0;
+    if(nums.length==1){
+        return nums
+    }
+    while(cur<nums.length){
+
+        if(nums[cur]===0 && nums[slow]===0){
+            cur++;
+        }
+         if(nums[cur]!==0 && nums[cur]!== undefined && nums[slow]===0){
+            let temp=nums[cur];
+            nums[cur]=nums[slow];
+            nums[slow]=temp;
+            cur++;
+            slow++;
+        }
+        if(nums[cur]!==0 && nums[cur]!== undefined && nums[slow]!==0){
+            cur++;
+            slow++;
         }
     }
-    }
-    return nums
-    
+     return nums
 };
